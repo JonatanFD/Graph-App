@@ -1,0 +1,59 @@
+.treetable {
+    background-color: rgb(24, 24, 27);
+    width: 450px;
+    padding: 1rem;
+    border-radius: 16px;
+    position: relative;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: white;
+    
+}
+
+.close {
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    padding: 6px !important;    box-sizing: content-box;
+    width: 20px;
+    height: 20px;
+}
+.title {
+    padding: 0.5rem 0;
+}
+
+.title h2 {
+    font-weight: 500;
+}
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 40px;
+}
+.header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    font-size: 16px;
+    background-color: #27272a;
+    color: rgb(161, 161, 170);
+    border-radius: 8px;
+    min-height: 40px;
+}
+.row p, .header p {
+    width: 33%;
+    text-align: center;
+    padding: 1px 12px;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-height: 300px;
+    overflow: auto;
+}

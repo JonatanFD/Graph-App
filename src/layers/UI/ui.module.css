@@ -1,0 +1,39 @@
+.createButton {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 14px;
+    background-color: var(--yellow-c);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 20px;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    z-index: var(--ui-z-index);
+}
+
+.helpButton {
+    position: absolute;
+    background-color: var(--window-bg-c);
+    border-radius: 5px;
+    bottom: 16px;
+    right: 16px;
+    padding: 6px;
+    z-index: var(--ui-z-index);
+}
+
+
+.help {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.help:hover {
+    background-color: var(--window-hover);
+}

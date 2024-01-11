@@ -1,0 +1,115 @@
+.dropdown {
+    position: absolute;
+    background-color: #181818;
+    font-weight: 400;
+    color: white;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    border: 1px solid rgba(236, 237, 238, 0.04);
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    top: 120%;
+    z-index: 5100;
+    cursor: default;
+    padding: 6px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    background-color: var(--window-hover);
+
+    color: rgb(161, 161, 170);
+    border-radius: 5px;
+    padding: 6px 12px;
+    position: relative;
+}
+.header[editing="true"] {
+    padding: 0;
+    justify-content: start;
+}
+
+
+.title {
+    font-weight: 700;
+}
+.details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+.detail {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    width: 100%;
+    padding: 0 0.5rem;
+    & .tag {
+        font-size: 11px;
+    }
+
+    & .node {
+        font-size: 12px;
+    }
+}
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+.delete,
+.edit {
+    padding: 6px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-sizing: content-box;
+}
+.delete:hover {
+    background-color: rgb(47, 4, 18);
+}
+.edit:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+.input {
+    width: 80%;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 12px;
+    color: white;
+}
+
+.confirm {
+    padding: 4px;
+    border-radius: 50%;
+    box-sizing: content-box;
+}
+.confirm:hover {
+    background-color: hsla(144, 65%, 47%, 0.25);
+    cursor: pointer;
+}
+
+
+.error {
+    position: absolute;
+    background-color: rgb(47, 4, 18);
+    font-weight: 400;
+    color: var(--red-c) ;
+    padding: 6px 8px;
+    border-radius: 8px;
+    bottom: 150%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}

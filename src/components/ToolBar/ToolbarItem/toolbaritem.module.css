@@ -1,0 +1,25 @@
+.toolbaritem { 
+    padding: 8px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color ease 1ms;
+    cursor: pointer;
+    font-size: 14px;
+    position: relative;
+    & .icon {
+        width: 24px; 
+        height: 24px;
+        user-select: none;
+    }
+}
+
+
+.toolbaritem:hover {
+    background-color: var(--window-hover);
+}
+
+.toolbaritem[aria-selected="true"] {
+    background-color: var(--window-hover);
+}

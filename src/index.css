@@ -1,13 +1,68 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body, html{
+  height: 100vh;
+}
+button {
+  outline: none;
+  border: none;
+}
+html {
+  overflow-y: hidden;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+img[as="icon"] {
+  width: 24px;
+  height: 24px;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter";
+}
+
+#root {
+  height: 100vh;
+  width: 100%;
+  background-color: #000;
+}
+
+/* General */
+[layer] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+:root {
+  --window-bg-c: #18181B;
+  --window-hover: #3F3F46;
+
+  --blue-c: #007AFF;
+  --text-hover: #52525B;
+
+  --yellow-c: #F5A524;
+  --green-c: #2AC868;
+  --brown-c: #945C01;
+
+  --ui-z-index: 9990;
+  --node-z-index: 600;
+  --edge-z-index: 500;
+
+  --modal-z-index: 9999;
+  --toaster-z-index: 9990;
+}
+
+
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--blue-c); 
+  border-radius: 6px; 
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent; 
 }

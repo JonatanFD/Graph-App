@@ -1,0 +1,34 @@
+
+
+.popover {
+    position: absolute;
+    cursor: default;
+    background-color: var(--window-hover);
+    color: white;
+
+    display: flex;
+    align-items: center;
+    text-wrap: nowrap;
+    padding:3px 7px ;
+    z-index: 100;
+
+    border-radius: 3px;
+}
+
+.popover[orientation="right"] {
+    left: 120%;
+}
+
+
+
+.triangulo {
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-right: 5px solid var(--window-hover);
+    border-bottom: 5px solid transparent;
+    position: absolute;
+    top: 50%;
+    left: -4px;
+    transform: translate(0%, -50%);
+}

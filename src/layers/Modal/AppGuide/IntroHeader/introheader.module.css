@@ -1,0 +1,13 @@
+.introheader {
+    display: flex;
+    flex-direction: column;
+}
+
+.image {
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: 16px;
+}

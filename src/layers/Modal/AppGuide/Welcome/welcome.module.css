@@ -1,0 +1,26 @@
+.welcome {
+
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0.5rem 0;
+    
+}
+
+.appname {
+    font-size: 36px;
+    font-weight: 500;
+}
+
+.introduction{ 
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    line-height: 20px;
+    font-size: 14px;
+    text-wrap: pretty;
+}

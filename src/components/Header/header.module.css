@@ -1,0 +1,15 @@
+.header {
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    width: fit-content;
+    position: absolute;
+
+    top: 16px;
+    left: 16px;
+    z-index: var(--ui-z-index);
+    color: white;
+
+}

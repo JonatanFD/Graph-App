@@ -1,0 +1,19 @@
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 4px 12px;
+    background-color: var(--window-bg-c);
+    border-radius: 5px;
+}
+
+.title {
+    color: white;
+    font-weight: 400;
+    font-size: 24px;
+}
+
+.img {
+    width: 31px;
+    height: 40px;
+}

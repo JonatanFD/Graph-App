@@ -1,0 +1,39 @@
+.canva {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+.line {
+    stroke-width: 2;
+}
+
+
+/* Tag */
+
+.weight {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.data {
+    padding: 6px 12px;
+    border-radius: 16px;
+    user-select: none;
+    position: relative;
+    z-index: 49;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+
+.description {
+    color: white;
+    padding: 1rem;
+    position: absolute;
+    background-color: red;
+}

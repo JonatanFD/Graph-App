@@ -1,0 +1,68 @@
+.selector {
+    position: absolute;
+    background-color: var(--window-hover);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    color: white;
+    border-radius: 5px;
+    z-index: 100;
+    cursor: default;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    width: 100px;
+}
+
+.selector[orientation="right"] {
+    left: 120%;
+}
+.selector[orientation="bottom"] {
+    top: 120%;
+}
+
+.option {
+    padding: 3px 12px 3px 7px;
+    border-radius: 3px;
+    cursor: pointer;
+    min-width: 100px;
+    font-size: 14px;
+    transition: background-color ease-in-out 0.5ms;
+}
+
+.option:hover {
+    background-color: var(--text-hover);
+}
+
+.option[aria-selected="true"] {
+    background-color: var(--blue-c);
+}
+
+
+
+.header {
+    position: relative;
+}
+
+.defaultInput {
+    outline: none;
+    border: none;
+    background-color: var(--window-hover);
+    color: white;
+    font-family: "Inter";
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    text-align: center;    
+    max-width: 100px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 100px;
+}

@@ -1,0 +1,59 @@
+.appguide {
+    padding: 16px 24px;
+    background-color: #18181B;
+    border-radius: 14px;
+    width: 500px;
+    position: relative;
+}
+
+
+.close {
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    padding: 6px !important;    box-sizing: content-box;
+    width: 20px;
+    height: 20px;
+}
+
+
+.header{ 
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+.content {
+    height: 320px;
+}
+
+
+.buttons {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    height: 40px;
+    
+}
+.skip { 
+    padding: 6px 12px;
+    border-radius: 8px;
+    color: white;
+    background-color: #3F3F46;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.skip:active {
+    margin-top: 1px;
+}
+
+.controllers {
+
+    display: flex;
+    align-items: center;
+    & .controller {
+        padding: 6px !important;
+    }
+}

@@ -1,0 +1,11 @@
+.selectedItem {
+    font-size: 12px;
+    width: 100%;
+    padding: 3px 7px 3px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.selectedItem:hover {
+    background-color: var(--text-hover);
+}
