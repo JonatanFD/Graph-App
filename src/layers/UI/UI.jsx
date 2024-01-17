@@ -5,22 +5,32 @@ import { useModalContext } from "../../context/ModalContext";
 import Creation from "../Modal/Creation/Creation";
 
 export default function UI() {
-
-    const  {setContent} = useModalContext()
+    const { setContent } = useModalContext();
 
     const onCreationOpen = () => {
-        setContent(<Creation />)
-    }
+        setContent(<Creation />);
+    };
 
     return (
-        <main layer="true" className={styles.ui}>
-            <Header />
-            <UserToolBar />
+        <div className={styles.uioverlay}>
+            <main className={styles.ui}>
+                <div className={styles.overlay}>
+                    <Header />
+                    <UserToolBar />
 
-            <button className={styles.createButton} onClick={onCreationOpen}>
-                Create New Graph
-                <img src="/toolbar/graph-icon.svg" alt="graph" as="icon" />
-            </button>
-        </main>
+                    <button
+                        className={styles.createButton}
+                        onClick={onCreationOpen}
+                    >
+                        Create New Graph
+                        <img
+                            src="/toolbar/graph-icon.svg"
+                            alt="graph"
+                            as="icon"
+                        />
+                    </button>
+                </div>
+            </main>
+        </div>
     );
 }

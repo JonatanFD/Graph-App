@@ -4,16 +4,32 @@
     gap: 10px;
     padding: 4px 12px;
     background-color: var(--window-bg-c);
+    z-index: var(--ui-z-index);
     border-radius: 5px;
 }
 
 .title {
     color: white;
-    font-weight: 400;
-    font-size: 24px;
+    font-weight: 500;
+    font-size: 22px;
 }
 
 .img {
-    width: 31px;
-    height: 40px;
+    width: 29px;
+    height: 38px;
+}
+
+
+@media only screen and (max-width: 767px) {
+    .img {
+        width: 19px;
+        height: 28px;
+    }
+    .title {
+        font-size: 15px;
+
+    }
+    .logo {
+        padding: 4px 12px;
+    }
 }

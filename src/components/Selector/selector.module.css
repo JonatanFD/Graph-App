@@ -31,14 +31,12 @@
 }
 
 .option:hover {
-    background-color: var(--text-hover);
+    background-color: var(--blue-c);
 }
 
 .option[aria-selected="true"] {
     background-color: var(--blue-c);
 }
-
-
 
 .header {
     position: relative;

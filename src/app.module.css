@@ -1,4 +1,10 @@
 .app {
     height: 100%;
+    position: absolute;
+}
+
+.appoverlay {
     position: relative;
+    width: 100vw;
+    height: 100%;
 }

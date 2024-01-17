@@ -1,52 +1,44 @@
 .toolbar {
     display: flex;
-    align-items: center;
-    gap: 5px;
-    position: absolute;
+    gap: 10px;
     flex-direction: column;
-
-    border-radius: 5px;
-
-    position: absolute;
-    top: 50%;
-    left: 16px;
     z-index: var(--ui-z-index);
-    transform: translate(0%, -50%);
+    align-items: center;
+}
+.overlay {
+    width: calc(100%);
+    height: calc(100%);
+    padding: 16px;
+    position: absolute;
+    display: flex;
+    align-items: center;
 }
 
 .config {
-    background-color: var(--window-bg-c);
-    padding: 6px;
-    user-select: none;
     position: relative;
+    height: 40px;
+    width: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.configicon {
-    padding: 8px;
-    border: 5px;
+    background-color: var(--window-bg-c);
     border-radius: 5px;
+    padding: 6px;
+    box-sizing: content-box;
 }
-.configicon:hover {
-    background-color: var(--window-hover);
+.config img:hover {
+    border-radius: 5px;
+    background-color: var(--text-hover);
+    padding: 6px;
+    box-sizing: content-box;
 }
 
 @media only screen and (max-width: 767px) {
+    .overlay {
+        align-items: flex-end;
+        justify-content: center;
+    }
     .toolbar {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        position: absolute;
         flex-direction: row;
-    
-        border-radius: 5px;
-    
-        position: absolute;
-        z-index: var(--ui-z-index);
-        left: 16px;
-        bottom: 16px;
-        height: fit-content;
     }
 }

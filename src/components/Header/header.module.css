@@ -6,10 +6,11 @@
 
     width: fit-content;
     position: absolute;
-
     top: 16px;
     left: 16px;
     z-index: var(--ui-z-index);
     color: white;
-
+    
 }
+
+

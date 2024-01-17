@@ -116,6 +116,7 @@ export default function Creation({ defaultPage = 0 }) {
                                 type="text"
                                 className={styles.input}
                                 {...register("amount", formOptions)}
+                                autoComplete="off"
                             />
                         </div>
                     )}

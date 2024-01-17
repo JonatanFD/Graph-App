@@ -4,6 +4,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: var(--window-bg-c);
     transition: background-color ease 1ms;
     cursor: pointer;
     font-size: 14px;

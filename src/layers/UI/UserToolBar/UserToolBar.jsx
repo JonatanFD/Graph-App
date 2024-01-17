@@ -72,30 +72,31 @@ export default function UserToolBar() {
     };
 
     return (
-        <section className={styles.toolbar}>
-            <ToolBar orientation="vertical">
-                {TOOLBAR_ITEMS.map((item, index) => (
-                    <ToolbarItem key={item.key} settings={item}>
-                        <img
-                            src={item.icon}
-                            className={styles.configuration}
-                            alt="configuration"
-                        ></img>
-                    </ToolbarItem>
-                ))}
-            </ToolBar>
-            <ToolbarItem
-                className={styles.config}
-                key="configuration"
-                settings={CONFIG_ITEM}
-            >
-                <img
-                    src="/icons/settings-icon.svg"
-                    className={styles.configicon}
-                    alt="configuration"
-                ></img>
-            </ToolbarItem>
-        </section>
+        <div className={styles.overlay}>
+            <section className={styles.toolbar}>
+                <ToolBar orientation="vertical">
+                    {TOOLBAR_ITEMS.map((item, index) => (
+                        <ToolbarItem key={item.key} settings={item}>
+                            <img
+                                src={item.icon}
+                                className={styles.configuration}
+                                alt="configuration"
+                            ></img>
+                        </ToolbarItem>
+                    ))}
+                </ToolBar>
+                <ToolbarItem
+                    className={styles.config}
+                    key="configuration"
+                    settings={CONFIG_ITEM}
+                >
+                    <img
+                        src="/icons/settings-icon.svg"
+                        className={styles.configicon}
+                        alt="configuration"
+                    ></img>
+                </ToolbarItem>
+            </section>
+        </div>
     );
 }
-

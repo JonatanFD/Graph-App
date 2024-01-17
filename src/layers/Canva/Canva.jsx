@@ -11,11 +11,8 @@ const createNodeToast = {
     content: {
         title: "Successful",
         description: "Node has been created",
-    }
-}
-
-
-
+    },
+};
 
 export default function Canva() {
     const {
@@ -25,7 +22,7 @@ export default function Canva() {
         createNode,
     } = useAppContext();
 
-    const { setMessage, setToastConfig } = useToasterContext();
+    const { setToastConfig } = useToasterContext();
     const { Interface, changeInterface } = useInterfaceContext();
 
     // Here u can add some more interactions
@@ -33,7 +30,7 @@ export default function Canva() {
         if (Interface.creatingNode) {
             createNode(e);
 
-            setToastConfig(createNodeToast)
+            setToastConfig(createNodeToast);
         } else if (Interface.edgeDescription || Interface.nodeDescription) {
             changeInterface({ type: "clear" });
         }

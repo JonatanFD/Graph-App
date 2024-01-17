@@ -7,5 +7,5 @@
 }
 
 .selectedItem:hover {
-    background-color: var(--text-hover);
+    background-color: var(--blue-c);
 }

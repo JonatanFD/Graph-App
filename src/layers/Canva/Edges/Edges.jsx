@@ -69,6 +69,7 @@ export default function Edges() {
                     ></line>
                 )}
             </svg>
+            
             <section about="canva">
                 {Edges.map((edge) => {
                     const { id, boxW, boxH, boxLeft, boxTop, weight } = edge;

@@ -5,8 +5,10 @@ import UI from "./layers/UI/UI";
 function App() {
     return (
         <div className={styles.app}>
-            <UI />
-            <Canva />
+            <div className={styles.appoverlay}>
+                <UI />
+                <Canva />
+            </div>
         </div>
     );
 }
