@@ -32,3 +32,21 @@
 .configicon:hover {
     background-color: var(--window-hover);
 }
+
+@media only screen and (max-width: 767px) {
+    .toolbar {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        position: absolute;
+        flex-direction: row;
+    
+        border-radius: 5px;
+    
+        position: absolute;
+        z-index: var(--ui-z-index);
+        left: 16px;
+        bottom: 16px;
+        height: fit-content;
+    }
+}

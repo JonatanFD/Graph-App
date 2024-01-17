@@ -1,6 +1,6 @@
 .configuration {
-    background-color: rgb(24, 24, 27);
-    width: 800px;
+    background-color: var(--window-bg-c);
+    width: 600px;
     padding: 1rem;
     border-radius: 16px;
     position: relative;
@@ -27,13 +27,14 @@
     justify-content: space-between;
     align-items: center;
 
-    & .label {
-        font-size: 14px;
-    }
+    
 }
-
+.label {
+    font-size: 13px;
+}
 .title {
     font-weight: 500;
+    font-size: 22px;
 }
 
 
@@ -51,8 +52,13 @@
 
 .footer {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     margin-top: 2rem;
+    gap: 1rem;
+
+    & .save, & .discard {
+        font-size: 13px;
+    }
 }
 
 .save {
@@ -64,32 +70,7 @@
     border-radius: 5px;
 }
 
-.checkbox {
-    width: 50px;
-    height: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    border-radius: 999px;
-    justify-content: flex-start;
-    position: relative;
-}
-.checkbox[aria-selected="true"] {
-    justify-content: flex-end;
-}
-.checkbox::after {
-    content: "";
-    width: 25px;
-    height: 25px;
-    background-color: var(--window-hover);
-    border-radius: 50%;
-    transition: all 0.2s ease-in-out;
-    position: absolute;
-}
-.checkbox[aria-selected="true"]::after {
-    background-color: var(--blue-c);
-}
+
 
 .section {
     display: flex;
@@ -99,7 +80,8 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.20);
     & .sectionTitle {
         font-weight: 500;
-        font-size: 16px;
+        font-size: 11px;
+        opacity: 0.75;
     }
 
     & .sectionOptions {
@@ -121,4 +103,24 @@
 .radio {
     display: flex;
     gap: 1rem;
+}
+
+.inputField {
+    display: flex;
+    align-items: center;
+    
+}
+
+.discard {
+    background-color: rgb(243, 18, 96);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    
+}
+
+.error {
+    font-size: 13px;
+    color: var(--red-c);
+    margin-right: 10px;
 }

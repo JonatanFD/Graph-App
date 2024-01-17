@@ -1,5 +1,6 @@
 body, html{
   height: 100vh;
+  overflow: hidden;
 }
 button {
   outline: none;
@@ -43,13 +44,14 @@ img[as="icon"] {
   --yellow-c: #F5A524;
   --green-c: #2AC868;
   --brown-c: #945C01;
+  --red-c: #F11C62;
 
   --ui-z-index: 9990;
   --node-z-index: 600;
   --edge-z-index: 500;
 
   --modal-z-index: 9999;
-  --toaster-z-index: 9990;
+  --toaster-z-index: 99999;
 }
 
 
@@ -65,4 +67,11 @@ img[as="icon"] {
 
 ::-webkit-scrollbar-track {
   background-color: transparent; 
+}
+
+
+@media only screen and (max-width: 767px) {
+  body, html{
+    height: 100dvh;
+  }
 }

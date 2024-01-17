@@ -2,22 +2,58 @@ import { useForm } from "react-hook-form";
 import Selector from "../../../components/Selector/Selector";
 import SelectorItem from "../../../components/Selector/SelectorItem/SelectorItem";
 import { useAppContext } from "../../../context/AppContext";
-import { useInterfaceContext } from "../../../context/InterfaceContext";
 import { useModalContext } from "../../../context/ModalContext";
 import styles from "./configuration.module.css";
 import { useState } from "react";
 import Switch from "../../../components/Switch/Switch";
+import RadioGroup from "../../../components/RadioGroup/RadioGroup";
+import Radio from "../../../components/RadioGroup/Radio/Radio";
+import { formValidator, objectValidator } from "../../../utils/transitions";
+import { useToasterContext } from "../../../context/ToasterContext";
 
+const CONFIGURATION_ERROR = {
+    status: "error",
+    trigger: true,
+    content: {
+        title: "Error",
+        description: "There is an error",
+    },
+};
+
+const CONFIGURATION_OK = {
+    status: "ok",
+    trigger: true,
+    content: {
+        title: "Succesfull",
+        description: "All changes was saved",
+    },
+};
+const formOptions = {
+    required: {
+        value: true,
+        message: "Enter a number",
+    },
+    validate: {
+        value: (e) => formValidator(e),
+    },
+};
 export default function Configuration() {
     const { closeModal } = useModalContext();
-    const { changeMethod, method, configuration } = useAppContext();
-    const { register, handleSubmit } = useForm();
+    const { changeMethod, method, configuration, setConfiguration } =
+        useAppContext();
+    const { setToastConfig } = useToasterContext();
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
 
     const onSelectorChange = (value) => {
         changeMethod(value);
     };
     const [localConfig, setLocalConfig] = useState({
         showNodesName: configuration.showNodesName,
+        howToGenerate: configuration.howToGenerate,
     });
     const onShowNodesNameChange = () => {
         setLocalConfig({
@@ -25,13 +61,31 @@ export default function Configuration() {
             showNodesName: !localConfig.showNodesName,
         });
     };
+    const onHowToChange = (value) => {
+        setLocalConfig({ ...localConfig, howToGenerate: value });
+    };
 
     const onSubmit = handleSubmit((e) => {
-        console.log(e);
+        const newConfiguration = { ...localConfig, ...e };
+        console.log(newConfiguration);
+        if (objectValidator(newConfiguration)) {
+            newConfiguration.initialNodes = parseInt(
+                newConfiguration.initialNodes
+            );
+            newConfiguration.maxNodes = parseInt(newConfiguration.maxNodes);
+            newConfiguration.edgesMaxWeight = parseInt(
+                newConfiguration.edgesMaxWeight
+            );
 
-        console.log(parseInt(e.initialNodes));
-        console.log(parseInt(e.maxNodes));
+            setConfiguration(newConfiguration);
+            setToastConfig(CONFIGURATION_OK);
+        } else {
+            setToastConfig(CONFIGURATION_ERROR);
+        }
+        closeModal();
     });
+
+  
 
     return (
         <form className={styles.configuration} onSubmit={onSubmit}>
@@ -66,21 +120,38 @@ export default function Configuration() {
                                 Default initial nodes
                             </label>
 
-                            <input
-                                type="text"
-                                defaultValue={configuration.initialNodes}
-                                {...register("initialNodes")}
-                            />
+                            <span className={styles.inputField}>
+                                {errors.initialNodes && (
+                                    <div className={styles.error}>
+                                        Enter a number
+                                    </div>
+                                )}
+
+                                <input
+                                    type="text"
+                                    autoComplete="off"
+                                    defaultValue={configuration.initialNodes}
+                                    {...register("initialNodes", formOptions)}
+                                />
+                            </span>
                         </div>
                         <div className={styles.option}>
                             <label className={styles.label}>
                                 Max nodes that can be created
                             </label>
-                            <input
-                                type="text"
-                                defaultValue={configuration.maxNodes}
-                                {...register("maxNodes")}
-                            />
+                            <span className={styles.inputField}>
+                                {errors.maxNodes && (
+                                    <div className={styles.error}>
+                                        Enter a number
+                                    </div>
+                                )}
+                                <input
+                                    type="text"
+                                    autoComplete="off"
+                                    defaultValue={configuration.maxNodes}
+                                    {...register("maxNodes", formOptions)}
+                                />
+                            </span>
                         </div>
                     </section>
                 </section>
@@ -101,28 +172,16 @@ export default function Configuration() {
                         </div>
                         <div className={styles.radioOption}>
                             <label className={styles.label}>
-                                How to generate node's namesnpm
+                                How to generate node's names
                             </label>
 
-                            <div className={styles.radios}>
-                                <label className={styles.radio}>
-                                    <input
-                                        type="radio"
-                                        name="generate"
-                                        id="one"
-                                    />
-                                    <span>Random</span>
-                                </label>
-
-                                <label className={styles.radio}>
-                                    <input
-                                        type="radio"
-                                        name="generate"
-                                        id="two"
-                                    />
-                                    <span>Alphanumeric</span>
-                                </label>
-                            </div>
+                            <RadioGroup
+                                value={localConfig.howToGenerate}
+                                onValueChange={onHowToChange}
+                            >
+                                <Radio value="random">Random</Radio>
+                                <Radio value="alphabetic">Alphabetic</Radio>
+                            </RadioGroup>
                         </div>
                     </section>
                 </section>
@@ -135,18 +194,37 @@ export default function Configuration() {
                             <label className={styles.label}>
                                 Edges max weight
                             </label>
-                            <input
-                                type="text"
-                                defaultValue={configuration.edgesMaxWeight}
-                                {...register("maxEdgesWeight")}
-                            />
+
+                            <span className={styles.inputField}>
+                                {errors.edgesMaxWeight && (
+                                    <div className={styles.error}>
+                                        Enter a number
+                                    </div>
+                                )}
+
+                                <input
+                                    type="text"
+                                    defaultValue={configuration.edgesMaxWeight}
+                                    autoComplete="off"
+                                    {...register("edgesMaxWeight", formOptions)}
+                                />
+                            </span>
                         </div>
                     </section>
                 </section>
             </section>
 
             <div className={styles.footer}>
-                <button className={styles.save}>Save</button>
+                <button
+                    className={styles.discard}
+                    type="button"
+                    onClick={closeModal}
+                >
+                    Discard
+                </button>
+                <button className={styles.save} type="submit">
+                    Save
+                </button>
             </div>
         </form>
     );

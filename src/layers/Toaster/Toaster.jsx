@@ -8,14 +8,14 @@ const getToastImage = (status) => {
         case "ok":
             return "/toaster/confirm-icon.svg";
         case "error":
-            return "/";
+            return "/icons/error.svg";
         default:
             break;
     }
 };
 
 export default function Toaster() {
-    const { Toast, toastConfig, setMessage } = useToasterContext();
+    const { Toast, toastConfig } = useToasterContext();
 
     const {
         status,
@@ -26,7 +26,6 @@ export default function Toaster() {
 
 
     if (Toast) {
-        console.log("RENDEWRIZANDO EL TOAST", Toast);
         return (
             <AnimatePresence>
                 {toastConfig.activate && (
@@ -45,7 +44,6 @@ export default function Toaster() {
         );
     } else if (content) {
         const { title = undefined, description = undefined } = content;
-        console.log("CONTENT");
         return (
             <AnimatePresence>
                 {toastConfig.trigger && (

@@ -1,17 +1,27 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useGraph } from "../hooks/useGraph";
 import { createEdgeInfo, getNode } from "../lib/tools";
-import { useToasterContext } from "./ToasterContext";
 
 const AppContext = createContext();
 
+const INITIAL_CONFIG = {
+    maxNodes: 20,
+    initialNodes: 6,
+    showNodesName: true,
+    edgesMaxWeight: 10,
+    howToGenerate: "alphabetic",
+};
+const getInitialConfiguration = () => {
+    if (!localStorage.getItem("app-config")) {
+        return INITIAL_CONFIG;
+    }
+    return JSON.parse(localStorage.getItem("app-config"));
+};
+
 export const AppContextProvider = ({ children }) => {
-    const [configuration, setConfiguration] = useState({
-        maxNodes: 20,
-        initialNodes: 6,
-        showNodesName: true,
-        edgesMaxWeight: 10
-    });
+    const [configuration, setConfiguration] = useState(() =>
+        getInitialConfiguration()
+    );
     const {
         Edges,
         Kruskal,
@@ -27,8 +37,8 @@ export const AppContextProvider = ({ children }) => {
         addEdge,
         updateEdgeWeight,
         restartApp,
-        createNode,
-    } = useGraph(configuration.initialNodes);
+        createNode,restartWithData
+    } = useGraph(configuration);
 
     const [solution, setSolution] = useState("off");
     const [drawing, setDrawing] = useState(false);
@@ -133,11 +143,24 @@ export const AppContextProvider = ({ children }) => {
             return false;
         }
 
-        const newEdge = createEdgeInfo(fromNode, toNode);
+        const newEdge = createEdgeInfo(
+            fromNode,
+            toNode,
+            configuration.edgesMaxWeight
+        );
         addEdge(newEdge);
 
         return true;
     };
+
+    const restart = (amount) => {
+        if (0 <= amount <= configuration.maxNodes) {
+            restartGraph(amount);
+        }
+    };
+
+   
+
 
     useEffect(() => {
         if (connecting.from !== "" && connecting.to !== "") {
@@ -146,14 +169,10 @@ export const AppContextProvider = ({ children }) => {
         }
     }, [connecting]);
 
-    // useEffect(() => {
-    //     setCursor({ ...cursor, from: selectedNode });
-    // }, [selectedNode]);
-    const restart = (amount) => {
-        if (0 <= amount <= configuration.maxNodes) {
-            restartGraph(amount);
-        }
-    };
+    useEffect(() => {
+        localStorage.setItem("app-config", JSON.stringify(configuration));
+    }, [configuration]);
+
     return (
         <AppContext.Provider
             value={{
@@ -185,7 +204,9 @@ export const AppContextProvider = ({ children }) => {
                 createNode,
 
                 configuration,
-                setConfiguration
+                setConfiguration,
+
+                restartWithData
             }}
         >
             {children}

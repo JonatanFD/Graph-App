@@ -10,7 +10,6 @@ export default function ToolBar(props) {
         items, // si se proporciona por objetos
         children, // si se renderiza por fuera de la lista
         className,
-        orientation,
         defaultSelected = "",
         ...otherProps
     } = props;
@@ -44,7 +43,6 @@ export default function ToolBar(props) {
         >
             <div
                 className={`${styles.toolbar} ${className}`}
-                orientation={orientation}
                 {...otherProps}
             >
                 {content ? content : children}

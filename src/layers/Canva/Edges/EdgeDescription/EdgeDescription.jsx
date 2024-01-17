@@ -22,9 +22,7 @@ export default function EdgeDescription({ edge }) {
             setError("weight", { message: "Enter only numbers" });
             return;
         }
-
         const cantidad = parseInt(data.weight);
-
         if (cantidad > 10 || cantidad <= 0) {
             setError("weight", { message: "10 is max value" });
         } else {
@@ -65,6 +63,7 @@ export default function EdgeDescription({ edge }) {
                                     message: "Enter a number",
                                 },
                             })}
+                            autoComplete="off"
                         />
                         <img
                             src="/icons/confirm.svg"

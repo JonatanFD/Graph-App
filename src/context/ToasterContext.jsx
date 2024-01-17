@@ -17,7 +17,6 @@ export const ToasterContextProvider = ({ children }) => {
     };
 
     useEffect(() => {
-        console.log("APLICANDO EL EFFECT", toastConfig.trigger);
         const timer = setTimeout(() => {
             if (toastConfig.trigger) {
                 setMessage({ ...toastConfig, trigger: false }, false);

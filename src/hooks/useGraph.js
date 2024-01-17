@@ -6,12 +6,20 @@ import {
     getDistanceBetweenNodes,
 } from "../lib/tools";
 import { generateMinimunTree } from "../lib/GraphMethods";
-import { generateRandomName, generateRandomNumber } from "../utils/utils";
+import {
+    generateAlphabeticNames,
+    generateRandomName,
+    generateRandomNumber,
+} from "../utils/utils";
 
-export const useGraph = (amountOfNodes = 6) => {
+export const useGraph = (configuration) => {
     // Basics
-    const [Nodes, setNodes] = useState(() => createNodes(amountOfNodes));
-    const [Edges, setEdges] = useState(() => createEdgesWithNodes(Nodes));
+    const [Nodes, setNodes] = useState(() =>
+        createNodes(configuration.initialNodes, configuration.howToGenerate)
+    );
+    const [Edges, setEdges] = useState(() =>
+        createEdgesWithNodes(Nodes, configuration.edgesMaxWeight)
+    );
     const [restartApp, setRestartApp] = useState(false);
 
     // Movement
@@ -60,7 +68,9 @@ export const useGraph = (amountOfNodes = 6) => {
     const restartGraph = (newAmount) => {
         const newGraphNodes = createNodes(newAmount);
         setNodes(newGraphNodes);
-        setEdges(createEdgesWithNodes(newGraphNodes));
+        setEdges(
+            createEdgesWithNodes(newGraphNodes, configuration.edgesMaxWeight)
+        );
         setRestartApp(true);
     };
     const updateEdgesFromNode = (id = "") => {
@@ -154,11 +164,27 @@ export const useGraph = (amountOfNodes = 6) => {
         setEdges(updatedEdges);
         setRestartApp(true);
     };
+    const generateNodeName = () => {
+        if (configuration.howToGenerate === "random") {
+            return generateRandomName();
+        } else {
+            let increment = 1;
+            while (true) {
+                const name = generateAlphabeticNames(Nodes.length + increment)[
+                    Nodes.length + increment - 1
+                ];
+                if (!Nodes.find((node) => node.name === name)) {
+                    return name;
+                }
+                increment += 1;
+            }
+        }
+    };
 
     const createNode = (e) => {
         const newNode = {
             id: crypto.randomUUID(),
-            name: generateRandomName(),
+            name: generateNodeName(),
             top: e.clientY - 25,
             left: e.clientX - 25,
             maxEdges: generateRandomNumber(3, 5),
@@ -176,7 +202,11 @@ export const useGraph = (amountOfNodes = 6) => {
 
         let newNodesList = [];
         if (pairNode !== undefined) {
-            const newEdge = createEdgeInfo(newNode, pairNode);
+            const newEdge = createEdgeInfo(
+                newNode,
+                pairNode,
+                configuration.edgesMaxWeight
+            );
             newNode.edges.push(newEdge);
             newNodesList = Nodes.map((node) => {
                 if (node.id === pairNode.id) {
@@ -189,6 +219,13 @@ export const useGraph = (amountOfNodes = 6) => {
         setNodes([...newNodesList, newNode]);
         setRestartApp(true);
     };
+
+    const restartWithData = (edges, nodes) => {
+        setNodes(nodes)
+        setEdges(edges)
+        setRestartApp(true)
+
+    }
 
     useEffect(() => {
         if (selectedNode) {
@@ -220,5 +257,6 @@ export const useGraph = (amountOfNodes = 6) => {
         updateEdgeWeight,
         restartApp,
         createNode,
+        restartWithData
     };
 };

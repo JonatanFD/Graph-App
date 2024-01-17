@@ -19,8 +19,9 @@
     background-color: var(--green-c);
 }
 
-.toast[status="error"] {
+.toast[status="error"], .personalized[status="error"] {
     background-color: var(--red-c);
+    color: white;
     font-weight: 600;
 }
 

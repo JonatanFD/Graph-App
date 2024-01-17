@@ -6,8 +6,15 @@ import { useInterfaceContext } from "../../../context/InterfaceContext";
 import { useAppContext } from "../../../context/AppContext";
 
 export default function Nodes() {
-    const { Nodes, onMouseDownNode, onMouseLeave, onMouseEnter, cursor, connectNode } =
-        useAppContext();
+    const {
+        Nodes,
+        onMouseDownNode,
+        onMouseLeave,
+        onMouseEnter,
+        cursor,
+        connectNode,
+        configuration,
+    } = useAppContext();
 
     const { Interface, changeInterface } = useInterfaceContext();
 
@@ -20,10 +27,9 @@ export default function Nodes() {
 
     const onNodeClick = (id) => {
         if (Interface.connectingNodes) {
-            connectNode(id)
+            connectNode(id);
         }
-    }
-
+    };
     return (
         <section about="canva">
             {Nodes.map((node) => (
@@ -45,7 +51,7 @@ export default function Nodes() {
                     transition={{ duration: 0.1 }}
                     onClick={() => onNodeClick(node.id)}
                 >
-                    <span>{node.name}</span>
+                    {configuration.showNodesName && <span>{node.name}</span>}
                     <AnimatePresence>
                         {Interface.nodeDescription === node.id && (
                             <NodeDescription node={node} />

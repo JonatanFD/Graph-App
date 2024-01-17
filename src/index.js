@@ -15,9 +15,9 @@ root.render(
         <ToasterContextProvider>
             <InterfaceContextProvider>
                 <ModalContextProvider>
+                    <App />
                     <Modal />
                     <Toaster />
-                    <App />
                 </ModalContextProvider>
             </InterfaceContextProvider>
         </ToasterContextProvider>

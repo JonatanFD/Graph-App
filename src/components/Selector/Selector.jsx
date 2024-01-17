@@ -57,10 +57,6 @@ export default function Selector({
         setOpen(false)
         then(value)
     }
-
-    useEffect(() => {
-        console.log("CAMBIANDO", key);
-    }, [key]);
     return (
         <SelectorContext.Provider value={{key, select}}>
             <div className={styles.wrapper}>

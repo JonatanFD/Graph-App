@@ -7,8 +7,13 @@
     background-color: var(--window-bg-c);
     padding: 6px;
     border-radius: 5px;
+    flex-direction: column;
 }
 
-.toolbar[orientation='vertical'] {
-    flex-direction: column;
+
+
+@media only screen and (max-width: 767px) {
+    .toolbar {
+        flex-direction: row;
+    }
 }

@@ -1,0 +1,86 @@
+.manually {
+    padding: 1rem;
+    background-color: var(--window-bg-c);
+    border-radius: 16px;
+    width: 600px;
+    color: white;
+    position: relative;
+}
+.close {
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    padding: 6px !important;
+    box-sizing: content-box;
+    width: 20px;
+    height: 20px;
+}
+.title {
+    font-weight: 500;
+    font-size: 22px;
+}
+.subtitle {
+    font-size: 13px;
+    padding: 8px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.content {
+    font-size: 13px;
+}
+.items {
+    display: flex;
+    flex-direction: column;
+    padding: 0 2rem;
+    gap: 10px;
+}
+
+.code {
+    font-family: Consolas,"courier new";
+    padding: 6px 12px;
+    font-size: 105%;
+    background-color: var(--window-hover);
+    width: fit-content;
+    border-radius: 5px;
+}
+.example {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px 0 ;
+
+    & .exampleTitle{
+        font-size: 13px;
+
+    }
+    & .code{
+        font-size: 17px;
+    }
+}
+.codeContainer{ 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.codeContainer img {
+    width: 161px;
+    height: 50px;
+}
+.codeContainer p {
+    font-size: 13px;
+}
+.footer {
+    padding-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.button {
+    background-color: var(--blue-c);
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 5px;
+    color: white;
+}
