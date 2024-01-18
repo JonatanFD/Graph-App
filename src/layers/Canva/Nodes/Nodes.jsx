@@ -46,7 +46,6 @@ export default function Nodes() {
                     onMouseEnter={() => onMouseEnter(node.id)}
                     onDoubleClick={() => onDoubleClickHandler(node.id)}
                     style={{ left: node.left, top: node.top, zIndex: 999 }}
-                    whileTap={{ scale: 1.2 }}
                     whileHover={{ scale: 1.1 }}
                     transition={{ duration: 0.1 }}
                     onClick={() => onNodeClick(node.id)}

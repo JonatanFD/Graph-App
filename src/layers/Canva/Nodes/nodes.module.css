@@ -10,7 +10,6 @@
     color: black;
     position: absolute;
     user-select: none;
-    /* z-index: var(--node-z-index); */
-    z-index: 9999999;
+    z-index: var(--node-z-index);
 }
 

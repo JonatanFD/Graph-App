@@ -19,10 +19,8 @@ export const generateAlphabeticNames = (amount) => {
         if (i === letras.length - 1) { 
             amount -= letras.length;
             i = 0;
-            
             template = names[repeat]
             repeat += 1
-            console.log(letras);
         }
         names.push(template + letras[i]);
     }

@@ -39,7 +39,6 @@ export const useGraph = (configuration) => {
     const moveNode = (e) => {
         let top, left;
         if (e.clientX === undefined) {
-            e.preventDefault();
             top = e.touches[0].clientY - boxPosition.top;
             left = e.touches[0].clientX - boxPosition.left;
         } else {
@@ -64,7 +63,6 @@ export const useGraph = (configuration) => {
         setNodes([...updatedNodes]);
     };
 
-    // RESTART WITH AMOUNT OF NODES
     const restartGraph = (newAmount) => {
         const newGraphNodes = createNodes(newAmount);
         setNodes(newGraphNodes);

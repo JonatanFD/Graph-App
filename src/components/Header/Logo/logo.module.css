@@ -6,6 +6,7 @@
     background-color: var(--window-bg-c);
     z-index: var(--ui-z-index);
     border-radius: 5px;
+    user-select: none;
 }
 
 .title {

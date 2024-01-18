@@ -22,7 +22,7 @@ export default function UI() {
                         className={styles.createButton}
                         onClick={onCreationOpen}
                     >
-                        Create New Graph
+                        <p>Create New Graph</p>
                         <img
                             src="/toolbar/graph-icon.svg"
                             alt="graph"

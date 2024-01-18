@@ -37,6 +37,7 @@
     .overlay {
         align-items: flex-end;
         justify-content: center;
+        padding-bottom: 5rem;
     }
     .toolbar {
         flex-direction: row;

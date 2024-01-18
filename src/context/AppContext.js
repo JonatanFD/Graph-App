@@ -80,8 +80,8 @@ export const AppContextProvider = ({ children }) => {
             if (e.pageY === undefined) {
                 setBoxPosition({
                     top:
-                        e.touches[0].clientY - target.parentNode.offsetTop - 65,
-                    left: e.touches[0].clientX - target.parentNode.offsetLeft,
+                        e.touches[0].clientY - e.targetTouches[0].target.offsetTop - 65,
+                    left: e.touches[0].clientX - e.targetTouches[0].target.offsetLeft,
                 });
             } else {
                 setBoxPosition({

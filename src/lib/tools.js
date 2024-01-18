@@ -5,6 +5,23 @@ import {
 } from "../utils/utils";
 import { generateKruskalTree } from "./GraphMethods";
 
+const generateNodePositionY = () => {
+    let a = 0, b = 0
+    if (window.innerWidth <= 767) {
+        b = 72
+        a = 36
+    }
+
+    return generateRandomNumber(a, window.innerHeight - 50 - b) + a
+}
+
+const generateNodePositionX = () => {
+
+    return generateRandomNumber(0, window.innerWidth - 50)
+}
+
+
+
 // Creation tools
 export const createNodes = (amount, howToGenerate) => {
     const listOfNodes = [];
@@ -12,8 +29,8 @@ export const createNodes = (amount, howToGenerate) => {
     for (let i = 0; i < amount; i++) {
         const node = {
             id: crypto.randomUUID(),
-            top: generateRandomNumber(0, window.innerHeight - 50),
-            left: generateRandomNumber(0, window.innerWidth - 50),
+            top: generateNodePositionY(),
+            left: generateNodePositionX(),
             maxEdges: generateRandomNumber(3, 5),
             edges: [],
         };
@@ -41,12 +58,8 @@ export const createEdgesWithNodes = (nodes = [], weightMax) => {
         return listOfEdges;
     }
     while (true) {
-        // This function sets all nodes with empty edge list
         restartNodes(nodes);
-
         listOfEdges = createAllEdges(nodes, weightMax);
-        // Even if we create all edges, we dont know if all nodes are connected
-        // thats why we test it with Kruskal Algorithm
         const kruskal = generateKruskalTree(listOfEdges, nodes);
         if (kruskal.length !== 0) {
             break;
@@ -124,7 +137,6 @@ export const createEdgeInfo = (from = {}, to = {}, weightMax, manually = 0) => {
 };
 
 export const sortEdgesWeights = (edges = []) => {
-    // VERIFICAR SI HAY CAMBIO SIN EL SLICE
     return edges.slice().sort((a, b) => {
         if (a.weight >= b.weight) {
             return 1;

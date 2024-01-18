@@ -21,29 +21,38 @@ export default function Canva() {
         onMouseUpHandler,
         createNode,
     } = useAppContext();
-
     const { setToastConfig } = useToasterContext();
     const { Interface, changeInterface } = useInterfaceContext();
-
-    // Here u can add some more interactions
     const onClickCanva = (e) => {
         if (Interface.creatingNode) {
             createNode(e);
-
             setToastConfig(createNodeToast);
         } else if (Interface.edgeDescription || Interface.nodeDescription) {
             changeInterface({ type: "clear" });
         }
     };
+
+    const onCanvaMouseDown = (e) => {
+        e.stopPropagation()
+        onMouseDownHandler(e);
+    };
+    const onCanvaMouseUp = (e) => {
+        onMouseUpHandler(e);
+    };
+    const onCanvaMouseMove = (e) => {
+        e.stopPropagation()
+        onMouseMoveHandler(e);
+    };
+
     return (
         <section
             className={styles.canva}
-            onMouseMove={onMouseMoveHandler}
-            onMouseUp={onMouseUpHandler}
-            onMouseDown={onMouseDownHandler}
-            onTouchMove={onMouseMoveHandler}
-            onTouchStart={onMouseDownHandler}
-            onTouchEnd={onMouseUpHandler}
+            onMouseMove={onCanvaMouseMove}
+            onMouseUp={onCanvaMouseUp}
+            onMouseDown={onCanvaMouseDown}
+            onTouchMove={onCanvaMouseMove}
+            onTouchStart={onCanvaMouseDown}
+            onTouchEnd={onCanvaMouseUp}
             onClick={onClickCanva}
         >
             <Nodes />
